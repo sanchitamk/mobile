@@ -48,6 +48,8 @@
           useLabels:true
 
         }).pos(0,400,CENTER,BOTTOM).sca(5);
+
+       
         
  
         const label = new Label().addTo();
@@ -56,10 +58,10 @@
 
           let rect;
           if (e.rotation.y <= -2) {
-            rect = new Rectangle().center();
+            dial.currentValue = 25
             S.update();
           } else if (e.rotation.y > 2) {
-            rect.removeFrom();
+            dial.currentValue = 50
             S.update();
           }
         });
@@ -95,7 +97,9 @@
         background-image: url("assets/drake.jpg");
         /* background-repeat: no-repeat; */
         background-size: 50%;
+        color:white;
       }
+
     </style>
   </head>
   <body></body>
