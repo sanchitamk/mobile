@@ -9,14 +9,22 @@
       import zim from "https://zimjs.org/cdn/016/zim";
 
       // See Docs under Frame for FIT, FILL, FULL, and TAG
+
+      const assets = [
+        "drake.jpg",
+      ];
+      const path = "assets/";
+
       new Frame({
         scaling: FIT,
         width: 1200,
-        height: 2000,
-        color: light,
+        height: 2200,
+        color: black,
         outerColor: dark,
         ready: ready,
         sensors: true,
+        assets:assets,
+        path:path,
       });
       function ready() {
         // given F (Frame), S (Stage), W (width), H (height)
@@ -26,8 +34,22 @@
         // also SEE the PermissionAsk example below
        
         // and be on a mobile device
+      
+        let dial;
 
-        new Tabs().siz(W).pos(0, 0, CENTER, BOTTOM);
+        const drake=new Pic("drake.jpg").alp(0.5).center().bot();
+        dial= new Dial({
+          min:0, 
+          max:100,
+          step:12.5,
+          backgroundColor:purple, 
+          indicatorColor:white,
+          tickColor:white,
+          useLabels:true
+
+        }).pos(0,400,CENTER,BOTTOM).sca(5);
+        
+ 
         const label = new Label().addTo();
         F.on("deviceorientation", (e) => {
           label.text = e.rotation.y + "," + e.rotation.z;
@@ -63,56 +85,8 @@
           }
         }
 
-        STYLE = { bgColor: purple, once: true, paddingH: 20, skewX: 10 };
-        const logo = new Label("BIRTHDAY", 50, "Madimi One", yellow);
-        const heart = makeIcon("heart", pink);
-        const settings = makeIcon("menu", purple);
-        // listIcons()
-
-        STYLE = { align: CENTER, valign: CENTER };
-        const header = new Tile(
-          [heart, logo, settings],
-          3,
-          1,
-          160,
-          0,
-          "unique"
-        );
-
-        const content = new Container(600, 800);
-        new Rectangle(
-          content.width,
-          content.height,
-          new GradientColor([white, blue], 90)
-        ).addTo(content);
-        new Tile(
-          [new Dial(), new Stepper(), new Selector(), new Toggle()],
-          2,
-          2,
-          30,
-          40
-        )
-          .scaleTo(content, 90, 90)
-          .center(content);
-
-        const footer = new Container(500, 100);
-        const slider = new Slider({
-          sound: true,
-          vertical: false,
-          useLabels: true,
-        }).center(footer);
-        S.addChild(header, content, footer);
-
-        new Layout({
-          holder: S,
-          regions: [
-            { obj: header, marginTop: 3, maxWidth: 90 },
-            { obj: content, marginTop: 5 },
-            { obj: footer, valign: CENTER, marginTop: 5, maxWidth: 80 },
-          ],
-          lastMargin: 3,
-          showRegions: true,
-        });
+     
+       
       } // end ready
     </script>
     <meta name="viewport" content="width=device-width, user-scalable=no" />
