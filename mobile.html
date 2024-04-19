@@ -37,7 +37,7 @@
       
         let dial;
 
-        const drake=new Pic("drake.jpg").alp(0.5).center().bot();
+        const drake=new Pic("drake.jpg").alp(0.2).center().bot();
         dial= new Dial({
           min:0, 
           max:100,
@@ -52,16 +52,16 @@
        
         
  
-        const label = new Label().addTo();
+        const label = new Label().addTo().top();
         F.on("deviceorientation", (e) => {
           label.text = e.rotation.y + "," + e.rotation.z;
 
           let rect;
           if (e.rotation.y <= -2) {
-            dial.currentValue = 25
+            dial.currentValue = 12.5
             S.update();
           } else if (e.rotation.y > 2) {
-            dial.currentValue = 50
+            dial.currentValue = 37.5
             S.update();
           }
         });
