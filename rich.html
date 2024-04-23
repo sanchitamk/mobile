@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>ZIM - Code Creativity</title>
+
+<!-- zimjs.com - JavaScript Canvas Framework -->
+<script type="module">
+
+import zim from "https://zimjs.org/cdn/016/zim_physics";
+
+// See Docs under Frame for FIT, FILL, FULL, and TAG
+new Frame(FIT, 1024, 768, light, dark, ready);
+function ready() {
+    
+    // given F (Frame), S (Stage), W (width), H (height)
+    // put code here
+    
+    function rich() {
+	
+	let rich1=new Container(W,H).center();
+	
+	soundInstance.stop();
+	new Aud("nonstop.mp3").play();
+	const heading2=new Label({
+	        text:"Help Drake be number 1!", 
+	        size:70, 
+	        font:"Ubuntu", 
+	        color:white,
+	      }).pos(0,400,CENTER,TOP,rich1);
+	
+	     
+	const heading3=new Label({
+	  text:"Tilt your phone to make him stay at the top!", 
+	  size:50, 
+	  font:"Ubuntu", 
+	  color:white,lineWidth:700, 
+	  lineHeight:80, 
+	  align:CENTER
+	}).pos(0,500,CENTER,TOP,rich1);
+	
+	
+	const drake = new Pic("drake.png").sca(0.7)
+          .reg(CENTER)
+          .pos(0, 650, CENTER, BOTTOM, rich1)
+          
+
+		  new Triangle(800, 1000, 1000, "pink", "white", 2)
+          .reg(CENTER)
+          .pos(0, -10, CENTER, BOTTOM, rich1)
+          .addPhysics(false);
+
+	F.on("deviceorientation", (e) => {
+
+		drake.addPhysics({
+            bounciness: 0,
+            angular: 0.5,
+            density: 2,
+          });
+	  
+        const timer = new Container(200, 200)
+          .pos(0, 20, RIGHT, TOP, rich1)
+          .sca(0.7);
+    
+        const timerText = new Label({
+          text: "8",
+          size: 38,
+          font: "Anton",
+          color: "white",
+        }).center(timer);
+        const timerInt = interval({
+          time: 1,
+          call: () => {
+            timerText.text--;
+          },
+          total: 8,
+          complete: () => {
+            restart();
+          },
+        });
+        function restart() {
+          const wonPane = new Rectangle({
+            width: 400,
+            height: 400,
+            color: white,
+            borderColor: purple,
+            borderWidth: 8,
+            corner: 20,
+          }).pos(0, 380, CENTER, BOTTOM);
+
+          const youWon = new Label({
+            text: "You Won!!!",
+            size: 72,
+            font: "Anton",
+            color: orange,
+          }).pos(0, 600, CENTER, BOTTOM);
+
+          const retry = new Label({
+            text: "Retry",
+            size: 40,
+            font: "Ubuntu",
+            color: "white",
+          }).pos(0, 450, CENTER, BOTTOM);
+          const retryBtn = new Button(200, 80, retry, "black").pos(
+            0,
+            450,
+            CENTER,
+            BOTTOM
+          );
+          retryBtn.tap(() => {
+            zgo("index.html");
+          });
+        }
+
+
+        F.on("deviceorientation", (e) => {
+          label.text =
+            decimals(e.rotation.x) +
+            "," +
+            decimals(e.rotation.y) +
+            "," +
+            decimals(e.rotation.z);
+
+          const forceX = e.rotation.y * 35;
+          const forceY = e.rotation.x * 35;
+
+          drake.force(forceX, forceY);
+
+          drake.contact((obj) => {
+            if (obj.type == "Border") {
+              new Aud("embarrassing.mp3").play();
+              gameOver2();
+            }
+          });
+          function gameOver2() {
+            timerInt.clear();
+            F.off("deviceorientation", orientation);
+            drake.physics.dispose();
+            timerText.text == "0";
+            const LosePane = new Rectangle({
+              width: 400,
+              height: 400,
+              color: white,
+              borderColor: red,
+              borderWidth: 8,
+              corner: 20,
+            }).pos(0, 380, CENTER, BOTTOM);
+            const youWon = new Label({
+              text: "You Lost :(",
+              size: 72,
+              font: "Anton",
+              color: orange,
+            }).pos(0, 600, CENTER, BOTTOM);
+            const retry = new Label({
+              text: "Retry",
+              size: 40,
+              font: "Ubuntu",
+              color: "white",
+            }).pos(0, 450, CENTER, BOTTOM);
+            const retryBtn = new Button(200, 80, retry, "black").pos(
+              0,
+              450,
+              CENTER,
+              BOTTOM
+            );
+            retryBtn.tap(() => {
+              zgo("index.html");
+            });
+          }
+          S.update();
+        });
+	  
+	
+	            }); 
+	  
+	}
+} // end ready
+
+</script>
+<meta name="viewport" content="width=device-width, user-scalable=no" />
+</head>
+<body></body>
+</html>

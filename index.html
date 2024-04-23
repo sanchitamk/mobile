@@ -311,7 +311,7 @@ https://zimjs.com/zapps
 	
 	const drake = new Pic("drake.png").sca(0.7)
           .reg(CENTER)
-          .pos(0, 650, CENTER, BOTTOM, rich1)
+          
           
 
 		  new Triangle(800, 1000, 1000, "pink", "white", 2)
@@ -321,7 +321,8 @@ https://zimjs.com/zapps
 
 	F.on("deviceorientation", (e) => {
 
-		drake.addPhysics({
+		drake.pos(0, 650, CENTER, BOTTOM, rich1)
+		.addPhysics({
             bounciness: 0,
             angular: 0.5,
             density: 2,
