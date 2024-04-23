@@ -314,13 +314,14 @@ https://zimjs.com/zapps
           
 	const drake = new Pic("drake.png").sca(0.8)
           .reg(CENTER)
+		  .pos(0, 650, CENTER, BOTTOM, rich1)
 		 
 
 	F.on("deviceorientation", (e) => {
 
 
-		drake.pos(0, 650, CENTER, BOTTOM, rich1)
-		.addPhysics({
+		drake.
+		addPhysics({
 			bounciness: 0,
             angular: 0.5,
             density: 1,
