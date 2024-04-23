@@ -393,13 +393,14 @@ https://zimjs.com/zapps
         //     "," +
         //     decimals(e.rotation.z);
 
-          const forceX = e.rotation.y * 35;
-          const forceY = e.rotation.x * 35;
+          const forceX = e.rotation.y * 10;
+          const forceY = e.rotation.x * 10;
 
-          drake.force(forceX, forceY);
+          drake.impulse(forceX, forceY);
 
           drake.contact((obj) => {
             if (obj.type == "Border") {
+				new Rectangle().center();
              // new Aud("embarrassing.mp3").play();
              // gameOver2();
             }
