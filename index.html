@@ -321,7 +321,7 @@ https://zimjs.com/zapps
 
 		drake.pos(0, 650, CENTER, BOTTOM, rich1)
 		.addPhysics({
-			bounciness: 0,
+			bounciness: 1,
             angular: 0.5,
             density: 2,
 		});
@@ -397,14 +397,14 @@ https://zimjs.com/zapps
         //     "," +
         //     decimals(e.rotation.z);
 
-          const forceX = e.rotation.y * 5;
-          const forceY = e.rotation.x * 5;
+          const forceX = e.rotation.y * 2;
+          const forceY = e.rotation.x * 2;
 
           drake.impulse(forceX, forceY);
 
           drake.contact((obj) => {
             if (obj.type == "Border") {
-				new Rectangle().center();
+				//new Rectangle().center();
              // new Aud("embarrassing.mp3").play();
              // gameOver2();
             }
