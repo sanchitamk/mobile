@@ -397,10 +397,10 @@ https://zimjs.com/zapps
         //     "," +
         //     decimals(e.rotation.z);
 
-          const forceX = e.rotation.y * 2;
+         // const forceX = e.rotation.y * 2;
           const forceY = e.rotation.x * 2;
 
-          drake.impulse(forceX, forceY);
+          drake.impulse(forceX);
 
           drake.contact((obj) => {
             if (obj.type == "Border") {
