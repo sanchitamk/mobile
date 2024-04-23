@@ -312,24 +312,24 @@ https://zimjs.com/zapps
 	
           
           
-	const drake = new Pic("drake.png").sca(0.7)
+	const drake = new Pic("drake.png").sca(0.8)
           .reg(CENTER)
 		 
 
 	F.on("deviceorientation", (e) => {
 
+
+		drake.pos(0, 650, CENTER, BOTTOM, rich1)
+		.addPhysics({restitution:.5});
+	  
 		
 		  new Triangle(800, 1000, 1000, "pink", "white", 2)
           .reg(CENTER)
           .pos(0, -10, CENTER, BOTTOM, rich1)
           .addPhysics(false);
-		drake.pos(0, 650, CENTER, BOTTOM, rich1)
-		.addPhysics({
-            bounciness: 0,
-            angular: 0.5,
-            density: 2,
-          });
-	  
+
+
+		
         const timer = new Container(200, 200)
           .pos(0, 20, RIGHT, TOP, rich1)
           .sca(0.7);
