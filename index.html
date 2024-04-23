@@ -139,14 +139,14 @@ https://zimjs.com/zapps
 	          label:"Make Drake dance",
 	          color:white,
 	          size:30,
-	          radius:310}).rot(180).pos(0,1060,CENTER,BOTTOM,firstScreen);
+	          radius:310}).rot(180).pos(0,1160,CENTER,BOTTOM,firstScreen);
 	          
 	        const dialText1=new LabelOnArc({
 	          font:"Ubuntu",
 	          label:"Make Drake rich and famous",
 	          color:white,
 	          size:30,
-	          radius:310}).rot(0).pos(0,1110,CENTER,BOTTOM,firstScreen);
+	          radius:310}).rot(0).pos(0,1210,CENTER,BOTTOM,firstScreen);
 	        
 	
 	        const buttonLabel=new Label({
@@ -162,7 +162,7 @@ https://zimjs.com/zapps
 	          label:buttonLabel,
 	          rollBackgroundColor:pink,
 	          corner:20
-	        }).pos(0,500,CENTER,BOTTOM,firstScreen);
+	        }).pos(0,600,CENTER,BOTTOM,firstScreen);
 	
 	
 	        const buttonLabel2=new Label({
@@ -178,12 +178,12 @@ https://zimjs.com/zapps
 	          label:buttonLabel2,
 	          rollBackgroundColor:pink,
 	          corner:20
-	        }).pos(0,300,CENTER,BOTTOM,firstScreen);
+	        }).pos(0,400,CENTER,BOTTOM,firstScreen);
 	
 	       
 	
-	        new Circle(280,pink).pos(0,800,CENTER,BOTTOM,firstScreen);
-	        head=new Pic("head.png").pos(382,310,CENTER,BOTTOM,firstScreen).reg(CENTER);
+	        new Circle(280,pink).pos(0,900,CENTER,BOTTOM,firstScreen);
+	        head=new Pic("head.png").pos(382,410,CENTER,BOTTOM,firstScreen).reg(CENTER);
 	
 	       
 	
@@ -291,7 +291,7 @@ https://zimjs.com/zapps
 	
 	soundInstance.stop();
 	const heading2=new Label({
-	        text:"Collect awards, money and more", 
+	        text:"Help Drake be number 1!", 
 	        size:70, 
 	        font:"Ubuntu", 
 	        color:white,
@@ -299,7 +299,7 @@ https://zimjs.com/zapps
 	
 	     
 	const heading3=new Label({
-	  text:"Tilt your phone to make him move left and right!", 
+	  text:"Tilt your phone to make him stay at the top!", 
 	  size:50, 
 	  font:"Ubuntu", 
 	  color:white,lineWidth:700, 
@@ -309,28 +309,137 @@ https://zimjs.com/zapps
 	
 	
 	
-	let record;
+
 	F.on("deviceorientation", (e) => {
 	  
 	    
-	record=new Pic("record.png").center(rich1);
-	
-	const first = new Aud({file:"onedance.mp3", loop:true});
-	       
-	 
-	  
-	
-	            
-	            if (e.rotation.y >= 0 && e.rotation.y <= 40) {
-	                     record.rot(20);   
-	                     
-	          const firstInstance = first.play();
-	                } 
-	    
-	            if (e.rotation.y >= -40 && e.rotation.y < 0) {
-	              record.rot(-20);   
-	                  first.stop();
-	                 }
+		new Aud("nonstop.mp3").play();
+        const drake = new Pic("drake.png")
+          .sca(0.9)
+          .reg(CENTER)
+          .pos(0, 650, CENTER, BOTTOM, rich1)
+          .addPhysics({
+            bounciness: 0,
+            angular: 0.5,
+            density: 2,
+          });
+
+        new Rectangle(30, 465, pink, white, 2)
+          .reg(CENTER)
+          .pos(0, -10, CENTER, BOTTOM, rich1)
+          .addPhysics(false);
+
+        const timer = new Container(200, 200)
+          .pos(0, 20, RIGHT, TOP, gameContainer)
+          .sca(0.7);
+    
+        const timerText = new Label({
+          text: "8",
+          size: 38,
+          font: "Anton",
+          color: "white",
+        }).center(timer);
+        const timerInt = interval({
+          time: 1,
+          call: () => {
+            timerText.text--;
+          },
+          total: 8,
+          complete: () => {
+            restart();
+          },
+        });
+        function restart() {
+          const wonPane = new Rectangle({
+            width: 400,
+            height: 400,
+            color: white,
+            borderColor: purple,
+            borderWidth: 8,
+            corner: 20,
+          }).pos(0, 380, CENTER, BOTTOM);
+
+          const youWon = new Label({
+            text: "You Won!!!",
+            size: 72,
+            font: "Anton",
+            color: orange,
+          }).pos(0, 600, CENTER, BOTTOM);
+
+          const retry = new Label({
+            text: "Retry",
+            size: 40,
+            font: "Ubuntu",
+            color: "white",
+          }).pos(0, 450, CENTER, BOTTOM);
+          const retryBtn = new Button(200, 80, retry, "black").pos(
+            0,
+            450,
+            CENTER,
+            BOTTOM
+          );
+          retryBtn.tap(() => {
+            zgo("index.html");
+          });
+        }
+
+
+        F.on("deviceorientation", (e) => {
+          label.text =
+            decimals(e.rotation.x) +
+            "," +
+            decimals(e.rotation.y) +
+            "," +
+            decimals(e.rotation.z);
+
+          const forceX = e.rotation.y * 35;
+          const forceY = e.rotation.x * 35;
+
+          drake.force(forceX, forceY);
+
+          drake.contact((obj) => {
+            if (obj.type == "Border") {
+              new Aud("embarrassing.mp3").play();
+              gameOver2();
+            }
+          });
+          function gameOver2() {
+            timerInt.clear();
+            F.off("deviceorientation", orientation);
+            drake.physics.dispose();
+            timerText.text == "0";
+            const LosePane = new Rectangle({
+              width: 400,
+              height: 400,
+              color: white,
+              borderColor: red,
+              borderWidth: 8,
+              corner: 20,
+            }).pos(0, 380, CENTER, BOTTOM);
+            const youWon = new Label({
+              text: "You Lost :(",
+              size: 72,
+              font: "Anton",
+              color: orange,
+            }).pos(0, 600, CENTER, BOTTOM);
+            const retry = new Label({
+              text: "Retry",
+              size: 40,
+              font: "Ubuntu",
+              color: "white",
+            }).pos(0, 450, CENTER, BOTTOM);
+            const retryBtn = new Button(200, 80, retry, "black").pos(
+              0,
+              450,
+              CENTER,
+              BOTTOM
+            );
+            retryBtn.tap(() => {
+              zgo("index.html");
+            });
+          }
+          S.update();
+        });
 	  
 	
 	            }); 
