@@ -60,7 +60,8 @@ https://zimjs.com/zapps
         "head.png",
         "record.png",
         "Anton.ttf",
-        "Ubuntu.ttf"
+        "Ubuntu.ttf",
+		"home.png"
 	]
       const path = "assets/";
 
@@ -126,6 +127,11 @@ https://zimjs.com/zapps
 	          lineHeight:80, 
 	          align:CENTER
 	        }).pos(0,700,CENTER,TOP,firstScreen);
+
+			const home=new Pic("home.png").reg(CENTER).pos(0,80,CENTER,BOTTOM).sca(0.5);
+			home.on("click",()=>{
+				zgo("index.html");
+			});
 	
 	
 	        const dialText=new LabelOnArc({
@@ -253,7 +259,7 @@ https://zimjs.com/zapps
 	        if (!right) {
 	
 	          right=new Pic("dance1.png")
-	          .loc(600,1500,dance1)
+	          .loc(600,1400,dance1)
 	          .sca(0.8)
 	          .reg(CENTER);
 	        }
@@ -267,7 +273,7 @@ https://zimjs.com/zapps
 	        }
 	        if (!wrong) {
 	          wrong=new Pic("dance2.png")
-	          .loc(600,1500,dance1)
+	          .loc(600,1400,dance1)
 	          .sca(0.8)
 	          .reg(CENTER);
 	        
