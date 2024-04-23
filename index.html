@@ -323,7 +323,7 @@ https://zimjs.com/zapps
 		.addPhysics({
 			bounciness: 1,
             angular: 0.5,
-            density: 2,
+            density: 1,
 		});
 	  
 		
@@ -398,17 +398,17 @@ https://zimjs.com/zapps
         //     decimals(e.rotation.z);
 
          // const forceX = e.rotation.y * 2;
-          const forceY = e.rotation.x * 2;
+        //   const forceY = e.rotation.x * 2;
 
-          drake.impulse(forceX);
+        //   drake.force(forceX);
 
-          drake.contact((obj) => {
-            if (obj.type == "Border") {
-				//new Rectangle().center();
-             // new Aud("embarrassing.mp3").play();
-             // gameOver2();
-            }
-          });
+        //   drake.contact((obj) => {
+        //     if (obj.type == "Border") {
+		// 		//new Rectangle().center();
+        //      // new Aud("embarrassing.mp3").play();
+        //      // gameOver2();
+        //     }
+        //   });
         //   function gameOver2() {
         //     timerInt.clear();
         //     F.off("deviceorientation", orientation);
