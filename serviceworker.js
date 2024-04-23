@@ -7,6 +7,10 @@ var cacheName = 'zim_pwa_Drake_Famjam';
 var filesToCache = [
   './',
   'index.html',
+  "libraries/createjs.js",
+  "libraries/zim_min.js",
+  "libraries/box2d.js",
+  "libraries/physics_2.2.js",
   'assets/drake.jpg',
   'assets/onedance.mp3',
   'assets/hotlinebling.mp3',
@@ -14,26 +18,7 @@ var filesToCache = [
   'assets/dance2.png',
   'assets/head.png',
   'assets/record.png',
-  'assets/https://fonts.googleapis.com/css2?family=Ubuntu:ital',
-  'assets/wght@0',
-  'assets/300;0',
-  'assets/400;0',
-  'assets/500;0',
-  'assets/700;1',
-  'assets/300;1',
-  'assets/400;1',
-  'assets/500;1',
-  'assets/700&display=swap',
-  'assets/https://fonts.googleapis.com/css2?family=Anton&family=Ubuntu:ital',
-  'assets/wght@0',
-  'assets/300;0',
-  'assets/400;0',
-  'assets/500;0',
-  'assets/700;1',
-  'assets/300;1',
-  'assets/400;1',
-  'assets/500;1',
-  'assets/700&display=swap'
+
 ];
 
 /* Start the service worker and cache all of the app's content */
