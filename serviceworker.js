@@ -18,7 +18,7 @@ var filesToCache = [
   "assets/dance2.png",
   "assets/head.png",
   "assets/home.png",
-  "assets/record.png",
+  "assets/drake.png",
   "assets/Anton.ttf",
   "assets/Ubuntu.ttf",
 
