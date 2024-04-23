@@ -330,68 +330,68 @@ https://zimjs.com/zapps
 
 
 		
-        const timer = new Container(200, 200)
-          .pos(0, 20, RIGHT, TOP, rich1)
-          .sca(0.7);
+        // const timer = new Container(200, 200)
+        //   .pos(0, 20, RIGHT, TOP, rich1)
+        //   .sca(0.7);
     
-        const timerText = new Label({
-          text: "8",
-          size: 38,
-          font: "Anton",
-          color: "white",
-        }).center(timer);
-        const timerInt = interval({
-          time: 1,
-          call: () => {
-            timerText.text--;
-          },
-          total: 8,
-          complete: () => {
-            restart();
-          },
-        });
-        function restart() {
-          const wonPane = new Rectangle({
-            width: 400,
-            height: 400,
-            color: white,
-            borderColor: purple,
-            borderWidth: 8,
-            corner: 20,
-          }).pos(0, 380, CENTER, BOTTOM);
+        // const timerText = new Label({
+        //   text: "8",
+        //   size: 38,
+        //   font: "Anton",
+        //   color: "white",
+        // }).center(timer);
+        // const timerInt = interval({
+        //   time: 1,
+        //   call: () => {
+        //     timerText.text--;
+        //   },
+        //   total: 8,
+        //   complete: () => {
+        //     restart();
+        //   },
+        // });
+        // function restart() {
+        //   const wonPane = new Rectangle({
+        //     width: 400,
+        //     height: 400,
+        //     color: white,
+        //     borderColor: purple,
+        //     borderWidth: 8,
+        //     corner: 20,
+        //   }).pos(0, 380, CENTER, BOTTOM);
 
-          const youWon = new Label({
-            text: "You Won!!!",
-            size: 72,
-            font: "Anton",
-            color: orange,
-          }).pos(0, 600, CENTER, BOTTOM);
+        //   const youWon = new Label({
+        //     text: "You Won!!!",
+        //     size: 72,
+        //     font: "Anton",
+        //     color: orange,
+        //   }).pos(0, 600, CENTER, BOTTOM);
 
-          const retry = new Label({
-            text: "Retry",
-            size: 40,
-            font: "Ubuntu",
-            color: "white",
-          }).pos(0, 450, CENTER, BOTTOM);
-          const retryBtn = new Button(200, 80, retry, "black").pos(
-            0,
-            450,
-            CENTER,
-            BOTTOM
-          );
-          retryBtn.tap(() => {
-            zgo("index.html");
-          });
-        }
+        //   const retry = new Label({
+        //     text: "Retry",
+        //     size: 40,
+        //     font: "Ubuntu",
+        //     color: "white",
+        //   }).pos(0, 450, CENTER, BOTTOM);
+        //   const retryBtn = new Button(200, 80, retry, "black").pos(
+        //     0,
+        //     450,
+        //     CENTER,
+        //     BOTTOM
+        //   );
+        //   retryBtn.tap(() => {
+        //     zgo("index.html");
+        //   });
+        // }
 
 
-        F.on("deviceorientation", (e) => {
-          label.text =
-            decimals(e.rotation.x) +
-            "," +
-            decimals(e.rotation.y) +
-            "," +
-            decimals(e.rotation.z);
+        // F.on("deviceorientation", (e) => {
+        //   label.text =
+        //     decimals(e.rotation.x) +
+        //     "," +
+        //     decimals(e.rotation.y) +
+        //     "," +
+        //     decimals(e.rotation.z);
 
           const forceX = e.rotation.y * 35;
           const forceY = e.rotation.x * 35;
@@ -400,50 +400,50 @@ https://zimjs.com/zapps
 
           drake.contact((obj) => {
             if (obj.type == "Border") {
-              new Aud("embarrassing.mp3").play();
-              gameOver2();
+             // new Aud("embarrassing.mp3").play();
+             // gameOver2();
             }
           });
-          function gameOver2() {
-            timerInt.clear();
-            F.off("deviceorientation", orientation);
-            drake.physics.dispose();
-            timerText.text == "0";
-            const LosePane = new Rectangle({
-              width: 400,
-              height: 400,
-              color: white,
-              borderColor: red,
-              borderWidth: 8,
-              corner: 20,
-            }).pos(0, 380, CENTER, BOTTOM);
-            const youWon = new Label({
-              text: "You Lost :(",
-              size: 72,
-              font: "Anton",
-              color: orange,
-            }).pos(0, 600, CENTER, BOTTOM);
-            const retry = new Label({
-              text: "Retry",
-              size: 40,
-              font: "Ubuntu",
-              color: "white",
-            }).pos(0, 450, CENTER, BOTTOM);
-            const retryBtn = new Button(200, 80, retry, "black").pos(
-              0,
-              450,
-              CENTER,
-              BOTTOM
-            );
-            retryBtn.tap(() => {
-              zgo("index.html");
-            });
-          }
-          S.update();
+        //   function gameOver2() {
+        //     timerInt.clear();
+        //     F.off("deviceorientation", orientation);
+        //     drake.physics.dispose();
+        //     timerText.text == "0";
+        //     const LosePane = new Rectangle({
+        //       width: 400,
+        //       height: 400,
+        //       color: white,
+        //       borderColor: red,
+        //       borderWidth: 8,
+        //       corner: 20,
+        //     }).pos(0, 380, CENTER, BOTTOM);
+        //     const youWon = new Label({
+        //       text: "You Lost :(",
+        //       size: 72,
+        //       font: "Anton",
+        //       color: orange,
+        //     }).pos(0, 600, CENTER, BOTTOM);
+        //     const retry = new Label({
+        //       text: "Retry",
+        //       size: 40,
+        //       font: "Ubuntu",
+        //       color: "white",
+        //     }).pos(0, 450, CENTER, BOTTOM);
+        //     const retryBtn = new Button(200, 80, retry, "black").pos(
+        //       0,
+        //       450,
+        //       CENTER,
+        //       BOTTOM
+        //     );
+        //     retryBtn.tap(() => {
+        //       zgo("index.html");
+        //     });
+        //   }
+        //  S.update();
         });
 	  
 	
-	            }); 
+	          //  }); 
 	  
 	}
 	      
