@@ -290,6 +290,7 @@ https://zimjs.com/zapps
 	let rich1=new Container(W,H).center();
 	
 	soundInstance.stop();
+	new Aud("nonstop.mp3").play();
 	const heading2=new Label({
 	        text:"Help Drake be number 1!", 
 	        size:70, 
@@ -308,14 +309,7 @@ https://zimjs.com/zapps
 	}).pos(0,500,CENTER,TOP,rich1);
 	
 	
-	
-
-	F.on("deviceorientation", (e) => {
-	  
-	    
-		new Aud("nonstop.mp3").play();
-        const drake = new Pic("drake.png")
-          .sca(0.5)
+	const drake = new Pic("drake.png").sca(0.5)
           .reg(CENTER)
           .pos(0, 650, CENTER, BOTTOM, rich1)
           .addPhysics({
@@ -324,7 +318,10 @@ https://zimjs.com/zapps
             density: 2,
           });
 
-        new Rectangle(30, 465, pink, white, 2)
+	F.on("deviceorientation", (e) => {
+	  
+	    
+        new Triangle(500, 700, 700, "pink", "white", 2)
           .reg(CENTER)
           .pos(0, -10, CENTER, BOTTOM, rich1)
           .addPhysics(false);
