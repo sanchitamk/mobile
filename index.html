@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Drake Famjam</title>
+
+<!--
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ZIM Zapps
+Progressive Web App (PWA) tool output from
+https://zimjs.com/zapps 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-->
+
+<!-- ZIM PWA STEP 1 - MANIFEST -->
+<link rel="manifest" href="manifest.json">
+
+<!-- ZIM PWA STEP 2 - META -->
+<meta name="apple-mobile-web-app-title" content="Drake Famjam">
+<meta name="theme-color" content="#333333">
+<meta name="msapplication-TileColor" content="#333333">
+
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<link rel="apple-touch-icon" href="icons/icon_152.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="msapplication-TileImage" content="icons/icon_144.png">
+
+<!-- should have faveicons - see link below -->
+<!-- see https://www.favicon-generator.org/ -->
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="msapplication-starturl" content="./">
+
+<!-- ZIM PWA STEP 3 - SERVICE WORKER -->
+<script>
+	window.addEventListener("DOMContentLoaded", function () {
+		if (location.protocol === "https:" && "serviceWorker" in navigator) navigator.serviceWorker.register("./serviceworker.js");
+	});
+</script>
+
+<script src="libraries/createjs.js"></script>
+<script src="libraries/zim_min.js"></script>
+<script src="libraries/box2d.js"></script>
+<script src="libraries/physics_2.2.js"></script>
+    <!-- zimjs.com - JavaScript Canvas Framework -->
+    <script type="module">
+      //import zim from "https://zimjs.org/cdn/016/zim_game";
+
+      // See Docs under Frame for FIT, FILL, FULL, and TAG
+      const pics="drake.png";
+      const assets = [
+        pics,
+        "drake.jpg",
+        "onedance.mp3",
+        "hotlinebling.mp3",
+        "dance1.png",
+        "dance2.png",
+        "head.png",
+        "record.png",
+        "https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap",
+        "https://fonts.googleapis.com/css2?family=Anton&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      ];
+      const path = "assets/";
+
+      new Frame({
+        scaling: FIT,
+        width: 1300,
+        height: 2300,
+        color: black,
+        outerColor: dark,
+        ready: ready,
+        sensors: true,
+        assets:assets,
+        path:path,
+      });
+      function ready() {
+
+	// ZIM PWA STEP 4 - ADD TO HOME SCREEN (A2HS)
+	// NOTE: new PWA() works with ZIM Cat 04 or beyond
+	// Message shows if only if running from mobile Browser
+	// See https://zimjs.com/docs.html?item=PWA for more options
+
+	new PWA(runZapp);
+	function runZapp() {
+	
+	      
+	
+	        const sound = new Aud({file:"onedance.mp3", loop:true});
+	        const soundInstance = sound.play();
+	        
+	    
+	
+	        let head;
+	        let firstScreen=new Container(W,H).center();
+	       
+	        const drake=new Pic("drake.jpg").alp(0.3).center().bot();
+	
+	        const heading=new Label({
+	          text:"DRAKE FAMJAM", 
+	          size:180, 
+	          font:"Anton", 
+	          color:white,
+	        }).pos(0,200,CENTER,TOP);
+	
+	        const heading2=new Label({
+	          text:"Are you a Drake fan?", 
+	          size:70, 
+	          font:"Ubuntu", 
+	          color:white,
+	        }).pos(0,500,CENTER,TOP,firstScreen);
+	
+	        const heading4=new Label({
+	          text:"Have some fun here!", 
+	          size:70, 
+	          font:"Ubuntu", 
+	          color:white,
+	        }).pos(0,600,CENTER,TOP,firstScreen);
+	
+	        const heading3=new Label({
+	          text:"Rotate your phone to see Drake move", 
+	          size:50, font:"Ubuntu", 
+	          color:white,
+	          lineWidth:700, 
+	          lineHeight:80, 
+	          align:CENTER
+	        }).pos(0,700,CENTER,TOP,firstScreen);
+	
+	
+	        const dialText=new LabelOnArc({
+	          font:"Ubuntu",
+	          label:"Make Drake dance",
+	          color:white,
+	          size:30,
+	          radius:310}).rot(180).loc(650,1400,firstScreen);
+	          
+	        const dialText1=new LabelOnArc({
+	          font:"Ubuntu",
+	          label:"Make Drake rich and famous",
+	          color:white,
+	          size:30,
+	          radius:310}).rot(0).loc(650,1330,firstScreen);
+	        
+	
+	        const buttonLabel=new Label({
+	          text:"Make Drake Dance",
+	          font:"Anton",
+	          color:white,
+	          size:60
+	        })
+	
+	        const button=new Button({
+	          width:600,
+	          height:150,
+	          label:buttonLabel,
+	          rollBackgroundColor:pink,
+	          corner:20
+	        }).pos(0,150,CENTER,BOTTOM,firstScreen);
+	
+	
+	        const buttonLabel2=new Label({
+	          text:"Make Drake Rich",
+	          font:"Anton",
+	          color:white,
+	          size:60
+	        })
+	
+	        const button2=new Button({
+	          width:600,
+	          height:150,
+	          label:buttonLabel2,
+	          rollBackgroundColor:pink,
+	          corner:20
+	        }).pos(0,330,CENTER,BOTTOM,firstScreen);
+	
+	       
+	
+	        new Circle(280,pink).pos(0,650,CENTER,BOTTOM,firstScreen);
+	        head=new Pic("head.png").loc(670,1370,firstScreen).reg(CENTER);
+	
+	       
+	
+	        button.on("click",()=>{
+	              zog("okay");
+	              firstScreen.removeFrom();
+	              dance();
+	
+	          })
+	
+	          button2.on("click",()=>{
+	              zog("hello");
+	              firstScreen.removeFrom();
+	              rich();
+	
+	           })
+	       
+	    
+	        F.on("deviceorientation", (e) => {
+	          
+	          
+	          if (e.rotation.y >= 0 && e.rotation.y <= 40) {
+	            head.rot(20);
+	            S.update();
+	
+	      
+	          } else if (e.rotation.y >= -40 && e.rotation.y < 0) {
+	            head.rot(-20);
+	            S.update();
+	
+	            
+	            
+	           }
+	
+	        });
+	
+	       
+	       
+	
+	        let right;
+	        let wrong;
+	
+	
+	  function dance() {
+	
+	    let dance1=new Container(W,H).center();
+	
+	    soundInstance.stop();
+	    const heading2=new Label({
+	            text:"Make Drake Dance", 
+	            size:70, 
+	            font:"Ubuntu", 
+	            color:white,
+	          }).pos(0,400,CENTER,TOP,dance1);
+	
+	         
+	    const heading3=new Label({
+	      text:"Rotate your phone to make him dance!", 
+	      size:50, 
+	      font:"Ubuntu", 
+	      color:white,lineWidth:700, 
+	      lineHeight:80, 
+	      align:CENTER
+	    }).pos(0,500,CENTER,TOP,dance1);
+	
+	   new Aud({file:"hotlinebling.mp3", loop:true}).play();
+	    F.on("deviceorientation", (e) => {
+	      if (e.rotation.y >= 0 && e.rotation.y <= 40) {
+	       
+	        if (wrong) {
+	          wrong.alp(0); 
+	        }
+	        if (!right) {
+	
+	          right=new Pic("dance1.png")
+	          .loc(600,1500,dance1)
+	          .sca(0.8)
+	          .reg(CENTER);
+	        }
+	        right.alp(1); 
+	  
+	        S.update();
+	      } else if (e.rotation.y >= -40 && e.rotation.y < 0) {
+	        
+	        if (right) {
+	          right.alp(0);
+	        }
+	        if (!wrong) {
+	          wrong=new Pic("dance2.png")
+	          .loc(600,1500,dance1)
+	          .sca(0.8)
+	          .reg(CENTER);
+	        
+	        }
+	        wrong.alp(1); 
+	        S.update();
+	      }
+	      })
+	    }
+	        
+	
+	    function rich() {
+	
+	let rich1=new Container(W,H).center();
+	
+	soundInstance.stop();
+	const heading2=new Label({
+	        text:"Collect awards, money and more", 
+	        size:70, 
+	        font:"Ubuntu", 
+	        color:white,
+	      }).pos(0,400,CENTER,TOP,rich1);
+	
+	     
+	const heading3=new Label({
+	  text:"Tilt your phone to make him move left and right!", 
+	  size:50, 
+	  font:"Ubuntu", 
+	  color:white,lineWidth:700, 
+	  lineHeight:80, 
+	  align:CENTER
+	}).pos(0,500,CENTER,TOP,rich1);
+	
+	
+	
+	let record;
+	F.on("deviceorientation", (e) => {
+	  
+	    
+	record=new Pic("record.png").center(rich1);
+	
+	const first = new Aud({file:"onedance.mp3", loop:true});
+	       
+	 
+	  
+	
+	            
+	            if (e.rotation.y >= 0 && e.rotation.y <= 40) {
+	                     record.rot(20);   
+	                     
+	          const firstInstance = first.play();
+	                } 
+	    
+	            if (e.rotation.y >= -40 && e.rotation.y < 0) {
+	              record.rot(-20);   
+	                  first.stop();
+	                 }
+	  
+	
+	            }); 
+	  
+	}
+	      
+	  
+	
+	        
+	  const permissionType = "deviceorientation"; 
+	  const ask = new PermissionAsk(init, permissionType);
+	  function init(yes) {
+	    
+	    const errorPane = new Pane("SENSOR not available", yellow);
+	    if (yes) {
+	    
+	      label.text =
+	        decimals(e.rotation.x) +
+	        "," +
+	        decimals(e.rotation.y) +
+	        "," +
+	        decimals(e.rotation.z);
+	      S.update();
+	    } else {
+	      errorPane.show();
+	    }
+	  }
+	
+	     
+	       
+	} // end runZapp
+
+      } // end ready
+    </script>
+    
+    
+  </head>
+  <body></body>
+</html>
+

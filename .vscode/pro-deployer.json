@@ -1,0 +1,27 @@
+{
+	"enableStatusBarItem": true,
+	"enableQuickPick": true,
+	"uploadOnSave": true,
+	"autoDelete": true,
+	"checkGitignore": false,
+	"activeTargets": [
+		"My FTP"
+	],
+	"concurrency": 5,
+	"ignore": [
+		".git/**/*",
+		".vscode/**/*"
+	],
+	"targets": [
+		{
+			"name": "My FTP",
+			"type": "ftp",
+			"host": "sanchitasharma.net",
+			"port": 21,
+			"user": "sanchita@sanchitasharma.net",
+			"password": "svbZ+}B)Y;g[",
+			"dir": "/mobile",
+			"transferDataType": "binary"
+		}
+	]
+}
