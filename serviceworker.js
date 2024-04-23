@@ -6,7 +6,7 @@
 var cacheName = 'zim_pwa_Drake_Famjam';
 var filesToCache = [
   './',
-  'mobile.html',
+  'index.html',
   'assets/drake.jpg',
   'assets/onedance.mp3',
   'assets/hotlinebling.mp3',
