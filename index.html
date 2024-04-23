@@ -315,18 +315,20 @@ https://zimjs.com/zapps
 	const drake = new Pic("drake.png").sca(0.8)
           .reg(CENTER)
 		  .pos(0, 650, CENTER, BOTTOM, rich1)
-		 
 
-	F.on("deviceorientation", (e) => {
-
-
-		drake.
+		  drake.
 		addPhysics({
 			bounciness: 0,
             angular: 0.5,
             density: 1,
 		});
 	  
+		 
+
+	F.on("deviceorientation", (e) => {
+
+
+		
 		
 		  new Triangle(800, 1000, 1000, "pink", "white", 2)
           .reg(CENTER)
@@ -390,26 +392,27 @@ https://zimjs.com/zapps
         // }
 
 
-        // F.on("deviceorientation", (e) => {
-        //   label.text =
-        //     decimals(e.rotation.x) +
-        //     "," +
-        //     decimals(e.rotation.y) +
-        //     "," +
-        //     decimals(e.rotation.z);
+        F.on("deviceorientation", (e) => {
+          label.text =
+            decimals(e.rotation.x) +
+            "," +
+            decimals(e.rotation.y) +
+            "," +
+            decimals(e.rotation.z);
 
-         // const forceX = e.rotation.y * 2;
-        //   const forceY = e.rotation.x * 2;
+         const forceX = e.rotation.y * 2;
+          const forceY = e.rotation.x * 2;
 
-        //   drake.force(forceX);
+          drake.force(forceX);
 
-        //   drake.contact((obj) => {
-        //     if (obj.type == "Border") {
-		// 		//new Rectangle().center();
-        //      // new Aud("embarrassing.mp3").play();
-        //      // gameOver2();
-        //     }
-        //   });
+          drake.contact((obj) => {
+            if (obj.type == "Border") {
+				//new Rectangle().center();
+             // new Aud("embarrassing.mp3").play();
+             // gameOver2();
+            }
+          });
+		})
         //   function gameOver2() {
         //     timerInt.clear();
         //     F.off("deviceorientation", orientation);
