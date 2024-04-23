@@ -320,7 +320,11 @@ https://zimjs.com/zapps
 
 
 		drake.pos(0, 650, CENTER, BOTTOM, rich1)
-		.addPhysics({restitution:.5});
+		.addPhysics({
+			bounciness: 0,
+            angular: 0.5,
+            density: 2,
+		});
 	  
 		
 		  new Triangle(800, 1000, 1000, "pink", "white", 2)
@@ -393,8 +397,8 @@ https://zimjs.com/zapps
         //     "," +
         //     decimals(e.rotation.z);
 
-          const forceX = e.rotation.y * 10;
-          const forceY = e.rotation.x * 10;
+          const forceX = e.rotation.y * 5;
+          const forceY = e.rotation.x * 5;
 
           drake.impulse(forceX, forceY);
 
