@@ -5,19 +5,21 @@
 
 var cacheName = 'zim_pwa_Drake_Famjam';
 var filesToCache = [
-  './',
-  'index.html',
+  "./",
+  "index.html",
   "libraries/createjs.js",
   "libraries/zim_min.js",
   "libraries/box2d.js",
   "libraries/physics_2.2.js",
-  'assets/drake.jpg',
-  'assets/onedance.mp3',
-  'assets/hotlinebling.mp3',
-  'assets/dance1.png',
-  'assets/dance2.png',
-  'assets/head.png',
-  'assets/record.png',
+  "assets/drake.jpg",
+  "assets/onedance.mp3",
+  "assets/hotlinebling.mp3",
+  "assets/dance1.png",
+  "assets/dance2.png",
+  "assets/head.png",
+  "assets/record.png",
+  "assets/Anton.ttf",
+  "assets/Ubuntu.ttf",
 
 ];
 
