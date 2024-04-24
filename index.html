@@ -62,7 +62,10 @@ https://zimjs.com/zapps
         "Anton.ttf",
         "Ubuntu.ttf",
 		"home.png",
-		"close.png"
+		"close.png",
+		"house.png",
+		"plane.webp",
+		"award.png"
 	]
       const path = "assets/";
 
@@ -285,61 +288,367 @@ https://zimjs.com/zapps
 	      })
 	    }
 	        
-	let container1 = new Container(W, H).center();
-    let container2 = new Container(W, H).center();
-    let container3 = new Container(W, H).center();
+	
 
-
-	let pic1=new Pic("drake.jpg").addTo(container1);
-	let pic2=new Pic("drake.jpg").addTo(container1);
-	let pic3=new Pic("drake.jpg").addTo(container1);
-let close;
-let info;
-let cont;
-
-	pic1.on("click", ()=>{
-
-		cont=new Container(W,H).center();
-		info=new Label("Hello").center(cont);
-		close=new Pic("close.png").center(cont);
-
-		S.update();
-
-
-	})
-	close.on("click",()=>{
-	cont.removeFrom();
-
-	S.update();
-	})
-
-
-
+		let close;
+		let info;
+		let cont;
+		let cont1;
+		let cont2;
+		let cont3;
 	
 	    function rich() {
-	
-	let rich1=new Container(W,H).center();
+
+			// Heading
 
 
+			let rich1=new Container(W,H).center();
+
+			soundInstance.stop();
+			new Aud("nonstop.mp3").play();
+			const heading2=new Label({
+					text:"Tap on images!", 
+					size:70, 
+					font:"Ubuntu", 
+					color:white,
+				}).pos(0,400,CENTER,TOP,rich1);
+			
+				
+			const heading3=new Label({
+			text:"Tilt your phone to reveal more about Drake!", 
+			size:50, 
+			font:"Ubuntu", 
+			color:white,lineWidth:700, 
+			lineHeight:80, 
+			align:CENTER
+			}).pos(0,500,CENTER,TOP,rich1);
+
+			// Containers
+
+			let container1 = new Container(W, H);
+			let container2 = new Container(W, H);
+			let container3 = new Container(W, H);
+
+
+			// Container 1
+			new Circle(250,pink).pos(0,540,CENTER,BOTTOM,container1).alp(0.5);
+			let pic1=new Pic("house.png").reg(CENTER).sca(0.6).pos(0,500,CENTER,BOTTOM,container1);
+			pic1.wiggle("x", pic1.x, 20, 30, .5, 1);
+			pic1.wiggle("y", pic1.y, 20, 30, .5, 1);
+
+			new Circle(250,pink).pos(50,1150,RIGHT,BOTTOM,container1).alp(0.5);
+			let pic2=new Pic("award.png").reg(CENTER).sca(2.1).pos(50,1150,RIGHT,BOTTOM,container1);
+			pic2.wiggle("x", pic2.x, 20, 30, .5, 1);
+			pic2.wiggle("y", pic2.y, 20, 30, .5, 1);
+
+
+			new Circle(250,pink).pos(50,1150,LEFT,BOTTOM,container1).alp(0.5);
+			let pic3=new Pic("plane.webp").reg(CENTER).sca(0.4).pos(-20,950,LEFT,BOTTOM,container1).rot(-25);
+			pic3.wiggle("x", pic3.x, 20, 30, .5, 1);
+			pic3.wiggle("y", pic3.y, 20, 30, .5, 1);
+
+
+			let infoheading=new Label({
+				text:"DRAKE OWNS THESE", 
+				size:50, 
+				font:"Anton", 
+				color:white,lineWidth:700, 
+				lineHeight:80, 
+				padding:20,
+				align:CENTER
+				}).pos(0,700,CENTER,TOP,container1);
+
+			close=new Pic("close.png").sca(0.2)
+
+			pic1.on("click", ()=>{
+
+				cont=new Container(W,H).center();
+				info=new Label({
+				text:"Rotate your phone to make him dance!", 
+				size:50, 
+				paddingV:200,
+				paddingH:100,
+				corner:100,
+				font:"Ubuntu", 
+				color:white,
+				labelWidth:1100,
+				labelHeight:1100,
+				backgroundColor:pink, 
+				align:CENTER
+				}).center(cont);
+				
+				close.pos(200,800,RIGHT,TOP,cont);
+				S.update();
+
+
+			})
+
+			pic2.on("click", ()=>{
+
+				cont=new Container(W,H).center();
+				info=new Label({
+				text:"Rotate your phone to make him dance!", 
+				size:50, 
+				paddingV:200,
+				paddingH:100,
+				corner:100,
+				font:"Ubuntu", 
+				color:white,
+				labelWidth:1100,
+				labelHeight:1100,
+				backgroundColor:pink, 
+				align:CENTER
+				}).center(cont);
+
+				close.pos(200,800,RIGHT,TOP,cont);
+				S.update();
+
+
+			})
+
+			pic3.on("click", ()=>{
+
+				cont=new Container(W,H).center();
+				info=new Label({
+				text:"Rotate your phone to make him dance!", 
+				size:50, 
+				paddingV:200,
+				paddingH:100,
+				corner:100,
+				font:"Ubuntu", 
+				color:white,
+				labelWidth:1100,
+				labelHeight:1100,
+				backgroundColor:pink, 
+				align:CENTER
+				}).center(cont);
+
+				close.pos(200,800,RIGHT,TOP,cont);
+				S.update();
+
+
+			})
+
+			close.on("click",()=>{
+				cont.removeFrom();
+				S.update();
+			})
+
+			// Container 2
+			let close2;
 	
-	soundInstance.stop();
-	new Aud("nonstop.mp3").play();
-	const heading2=new Label({
-	        text:"Help Drake be number 1!", 
-	        size:70, 
-	        font:"Ubuntu", 
-	        color:white,
-	      }).pos(0,400,CENTER,TOP,rich1);
+			new Circle(250,pink).pos(0,540,CENTER,BOTTOM,container2).alp(0.5);
+			let pic4=new Pic("house.png").reg(CENTER).sca(0.6).pos(0,500,CENTER,BOTTOM,container2);
+			pic4.wiggle("x", pic4.x, 20, 30, .5, 1);
+			pic4.wiggle("y", pic4.y, 20, 30, .5, 1);
+
+			new Circle(250,pink).pos(50,1150,RIGHT,BOTTOM,container2).alp(0.5);
+			let pic5=new Pic("award.png").reg(CENTER).sca(2.1).pos(50,1150,RIGHT,BOTTOM,container2);
+			pic5.wiggle("x", pic5.x, 20, 30, .5, 1);
+			pic5.wiggle("y", pic5.y, 20, 30, .5, 1);
+
+
+			new Circle(250,pink).pos(50,1150,LEFT,BOTTOM,container2).alp(0.5);
+			let pic6=new Pic("plane.webp").reg(CENTER).sca(0.4).pos(-20,950,LEFT,BOTTOM,container2).rot(-25);
+			pic6.wiggle("x", pic6.x, 20, 30, .5, 1);
+			pic6.wiggle("y", pic6.y, 20, 30, .5, 1);
+
+
+			let infoheading2=new Label({
+				text:"DRAKE'S CHILDHOOD", 
+				size:50, 
+				font:"Anton", 
+				color:white,lineWidth:700, 
+				lineHeight:80, 
+				padding:20,
+				align:CENTER
+				}).pos(0,700,CENTER,TOP,container2);
+
+			close2=new Pic("close.png").sca(0.2)
+
+			pic4.on("click", ()=>{
+
+				cont2=new Container(W,H).center();
+				info=new Label({
+				text:"Rotate your phone to make him dance!", 
+				size:50, 
+				paddingV:200,
+				paddingH:100,
+				corner:100,
+				font:"Ubuntu", 
+				color:white,
+				labelWidth:1100,
+				labelHeight:1100,
+				backgroundColor:pink, 
+				align:CENTER
+				}).center(cont2);
+				
+				close2.pos(200,800,RIGHT,TOP,cont2);
+				S.update();
+
+
+			})
+
+			pic5.on("click", ()=>{
+
+			cont2=new Container(W,H).center();
+			info=new Label({
+			text:"Rotate your phone to make him dance!", 
+			size:50, 
+			paddingV:200,
+			paddingH:100,
+			corner:100,
+			font:"Ubuntu", 
+			color:white,
+			labelWidth:1100,
+			labelHeight:1100,
+			backgroundColor:pink, 
+			align:CENTER
+			}).center(cont2);
+
+			close2.pos(200,800,RIGHT,TOP,cont2);
+			S.update();
+
+
+			})
+
+			pic6.on("click", ()=>{
+
+			cont2=new Container(W,H).center();
+			info=new Label({
+			text:"Rotate your phone to make him dance!", 
+			size:50, 
+			paddingV:200,
+			paddingH:100,
+			corner:100,
+			font:"Ubuntu", 
+			color:white,
+			labelWidth:1100,
+			labelHeight:1100,
+			backgroundColor:pink, 
+			align:CENTER
+			}).center(cont2);
+
+			close2.pos(200,800,RIGHT,TOP,cont2);
+			S.update();
+
+
+			})
+
+			close2.on("click",()=>{
+				cont2.removeFrom();
+				S.update();
+			})
+
+
+
+
+			// Container 3
+			let close3;
 	
-	     
-	const heading3=new Label({
-	  text:"Tilt your phone to reveal more about Drake!", 
-	  size:50, 
-	  font:"Ubuntu", 
-	  color:white,lineWidth:700, 
-	  lineHeight:80, 
-	  align:CENTER
-	}).pos(0,500,CENTER,TOP,rich1);
+			new Circle(250,pink).pos(0,540,CENTER,BOTTOM,container3).alp(0.5);
+			let pic7=new Pic("house.png").reg(CENTER).sca(0.6).pos(0,500,CENTER,BOTTOM,container3);
+			pic7.wiggle("x", pic7.x, 20, 30, .5, 1);
+			pic7.wiggle("y", pic7.y, 20, 30, .5, 1);
+
+			new Circle(250,pink).pos(50,1150,RIGHT,BOTTOM,container3).alp(0.5);
+			let pic8=new Pic("award.png").reg(CENTER).sca(2.1).pos(50,1150,RIGHT,BOTTOM,container3);
+			pic8.wiggle("x", pic8.x, 20, 30, .5, 1);
+			pic8.wiggle("y", pic8.y, 20, 30, .5, 1);
+
+
+			new Circle(250,pink).pos(50,1150,LEFT,BOTTOM,container3).alp(0.5);
+			let pic9=new Pic("plane.webp").reg(CENTER).sca(0.4).pos(-20,950,LEFT,BOTTOM,container3).rot(-25);
+			pic9.wiggle("x", pic9.x, 20, 30, .5, 1);
+			pic9.wiggle("y", pic9.y, 20, 30, .5, 1);
+
+
+			let infoheading3=new Label({
+				text:"DRAKE'S CHILDHOOD", 
+				size:50, 
+				font:"Anton", 
+				color:white,lineWidth:700, 
+				lineHeight:80, 
+				padding:20,
+				align:CENTER
+				}).pos(0,700,CENTER,TOP,container3);
+
+			close3=new Pic("close.png").sca(0.2)
+
+			pic7.on("click", ()=>{
+
+				cont3=new Container(W,H).center();
+				info=new Label({
+				text:"Rotate your phone to make him dance!", 
+				size:50, 
+				paddingV:200,
+				paddingH:100,
+				corner:100,
+				font:"Ubuntu", 
+				color:white,
+				labelWidth:1100,
+				labelHeight:1100,
+				backgroundColor:pink, 
+				align:CENTER
+				}).center(cont3);
+				
+				close3.pos(200,800,RIGHT,TOP,cont3);
+				S.update();
+
+
+			})
+
+			pic8.on("click", ()=>{
+
+			cont3=new Container(W,H).center();
+			info=new Label({
+			text:"Rotate your phone to make him dance!", 
+			size:50, 
+			paddingV:200,
+			paddingH:100,
+			corner:100,
+			font:"Ubuntu", 
+			color:white,
+			labelWidth:1100,
+			labelHeight:1100,
+			backgroundColor:pink, 
+			align:CENTER
+			}).center(cont3);
+
+			close3.pos(200,800,RIGHT,TOP,cont3);
+			S.update();
+
+
+			})
+
+
+			pic9.on("click", ()=>{
+
+			cont3=new Container(W,H).center();
+			info=new Label({
+			text:"Rotate your phone to make him dance!", 
+			size:50, 
+			paddingV:200,
+			paddingH:100,
+			corner:100,
+			font:"Ubuntu", 
+			color:white,
+			labelWidth:1100,
+			labelHeight:1100,
+			backgroundColor:pink, 
+			align:CENTER
+			}).center(cont3);
+
+			close3.pos(200,800,RIGHT,TOP,cont3);
+			S.update();
+
+
+			})
+
+			close3.on("click",()=>{
+				cont3.removeFrom();
+				S.update();
+			})
 
 
 	
@@ -356,7 +665,7 @@ let cont;
     if (e.rotation.y >= -40 && e.rotation.y < -10) {
         // Handle the first range: -40 to -10
         if (!container1.isOnStage) {
-            container1.addTo();
+            container1.center();
             container1.isOnStage = true;
         }
         if (container2.isOnStage) {
@@ -370,7 +679,7 @@ let cont;
     } else if (e.rotation.y >= -10 && e.rotation.y <= 20) {
         // Handle the second range: -10 to 20
         if (!container2.isOnStage) {
-            container2.addTo();
+            container2.center();
             container2.isOnStage = true;
         }
         if (container1.isOnStage) {
@@ -384,7 +693,7 @@ let cont;
     } else if (e.rotation.y > 20 && e.rotation.y <= 40) {
         // Handle the third range: 20 to 40
         if (!container3.isOnStage) {
-            container3.addTo();
+            container3.center();
             container3.isOnStage = true;
         }
         if (container1.isOnStage) {
