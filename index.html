@@ -61,7 +61,8 @@ https://zimjs.com/zapps
         "drake.png",
         "Anton.ttf",
         "Ubuntu.ttf",
-		"home.png"
+		"home.png",
+		"close.png"
 	]
       const path = "assets/";
 
@@ -284,10 +285,42 @@ https://zimjs.com/zapps
 	      })
 	    }
 	        
+	let container1 = new Container(W, H).center();
+    let container2 = new Container(W, H).center();
+    let container3 = new Container(W, H).center();
+
+
+	let pic1=new Pic("drake.jpg").addTo(container1);
+	let pic2=new Pic("drake.jpg").addTo(container1);
+	let pic3=new Pic("drake.jpg").addTo(container1);
+let close;
+let info;
+let cont;
+
+	pic1.on("click", ()=>{
+
+		cont=new Container(W,H).center();
+		info=new Label("Hello").center(cont);
+		close=new Pic("close.png").center(cont);
+
+		S.update();
+
+
+	})
+	close.on("click",()=>{
+	cont.removeFrom();
+
+	S.update();
+	})
+
+
+
 	
 	    function rich() {
 	
 	let rich1=new Container(W,H).center();
+
+
 	
 	soundInstance.stop();
 	new Aud("nonstop.mp3").play();
@@ -300,161 +333,76 @@ https://zimjs.com/zapps
 	
 	     
 	const heading3=new Label({
-	  text:"Tilt your phone to make him stay at the top!", 
+	  text:"Tilt your phone to reveal more about Drake!", 
 	  size:50, 
 	  font:"Ubuntu", 
 	  color:white,lineWidth:700, 
 	  lineHeight:80, 
 	  align:CENTER
 	}).pos(0,500,CENTER,TOP,rich1);
-	
-	
-	
-          
-          
-	const drake = new Pic("drake.png").sca(0.8)
-          .reg(CENTER)
-		  .pos(0, 650, CENTER, BOTTOM, rich1)
 
-		  drake.
-		addPhysics({
-			bounciness: 0,
-            angular: 0.5,
-            density: 1,
-		});
+
+	
+	
+	
+        
+          
+	
+		}
 	  
 		 
 
-	F.on("deviceorientation", (e) => {
-
-
-		
-		
-		  new Triangle(800, 1000, 1000, "pink", "white", 2)
-          .reg(CENTER)
-          .pos(0, -10, CENTER, BOTTOM, rich1)
-          .addPhysics(false);
-
-
-		
-        // const timer = new Container(200, 200)
-        //   .pos(0, 20, RIGHT, TOP, rich1)
-        //   .sca(0.7);
-    
-        // const timerText = new Label({
-        //   text: "8",
-        //   size: 38,
-        //   font: "Anton",
-        //   color: "white",
-        // }).center(timer);
-        // const timerInt = interval({
-        //   time: 1,
-        //   call: () => {
-        //     timerText.text--;
-        //   },
-        //   total: 8,
-        //   complete: () => {
-        //     restart();
-        //   },
-        // });
-        // function restart() {
-        //   const wonPane = new Rectangle({
-        //     width: 400,
-        //     height: 400,
-        //     color: white,
-        //     borderColor: purple,
-        //     borderWidth: 8,
-        //     corner: 20,
-        //   }).pos(0, 380, CENTER, BOTTOM);
-
-        //   const youWon = new Label({
-        //     text: "You Won!!!",
-        //     size: 72,
-        //     font: "Anton",
-        //     color: orange,
-        //   }).pos(0, 600, CENTER, BOTTOM);
-
-        //   const retry = new Label({
-        //     text: "Retry",
-        //     size: 40,
-        //     font: "Ubuntu",
-        //     color: "white",
-        //   }).pos(0, 450, CENTER, BOTTOM);
-        //   const retryBtn = new Button(200, 80, retry, "black").pos(
-        //     0,
-        //     450,
-        //     CENTER,
-        //     BOTTOM
-        //   );
-        //   retryBtn.tap(() => {
-        //     zgo("index.html");
-        //   });
-        // }
-
-
-        F.on("deviceorientation", (e) => {
-          label.text =
-            decimals(e.rotation.x) +
-            "," +
-            decimals(e.rotation.y) +
-            "," +
-            decimals(e.rotation.z);
-
-         const forceX = e.rotation.x * 2;
-         // const forceY = e.rotation.x * 2;
-
-          drake.force(forceX);
-
-          drake.contact((obj) => {
-            if (obj.type == "Border") {
-				//new Rectangle().center();
-             // new Aud("embarrassing.mp3").play();
-             // gameOver2();
-            }
-          });
-		})
-        //   function gameOver2() {
-        //     timerInt.clear();
-        //     F.off("deviceorientation", orientation);
-        //     drake.physics.dispose();
-        //     timerText.text == "0";
-        //     const LosePane = new Rectangle({
-        //       width: 400,
-        //       height: 400,
-        //       color: white,
-        //       borderColor: red,
-        //       borderWidth: 8,
-        //       corner: 20,
-        //     }).pos(0, 380, CENTER, BOTTOM);
-        //     const youWon = new Label({
-        //       text: "You Lost :(",
-        //       size: 72,
-        //       font: "Anton",
-        //       color: orange,
-        //     }).pos(0, 600, CENTER, BOTTOM);
-        //     const retry = new Label({
-        //       text: "Retry",
-        //       size: 40,
-        //       font: "Ubuntu",
-        //       color: "white",
-        //     }).pos(0, 450, CENTER, BOTTOM);
-        //     const retryBtn = new Button(200, 80, retry, "black").pos(
-        //       0,
-        //       450,
-        //       CENTER,
-        //       BOTTOM
-        //     );
-        //     retryBtn.tap(() => {
-        //       zgo("index.html");
-        //     });
-        //   }
-        //  S.update();
-        });
+		F.on("deviceorientation", (e) => {
+    if (e.rotation.y >= -40 && e.rotation.y < -10) {
+        // Handle the first range: -40 to -10
+        if (!container1.isOnStage) {
+            container1.addTo();
+            container1.isOnStage = true;
+        }
+        if (container2.isOnStage) {
+            container2.removeFrom();
+            container2.isOnStage = false;
+        }
+        if (container3.isOnStage) {
+            container3.removeFrom();
+            container3.isOnStage = false;
+        }
+    } else if (e.rotation.y >= -10 && e.rotation.y <= 20) {
+        // Handle the second range: -10 to 20
+        if (!container2.isOnStage) {
+            container2.addTo();
+            container2.isOnStage = true;
+        }
+        if (container1.isOnStage) {
+            container1.removeFrom();
+            container1.isOnStage = false;
+        }
+        if (container3.isOnStage) {
+            container3.removeFrom();
+            container3.isOnStage = false;
+        }
+    } else if (e.rotation.y > 20 && e.rotation.y <= 40) {
+        // Handle the third range: 20 to 40
+        if (!container3.isOnStage) {
+            container3.addTo();
+            container3.isOnStage = true;
+        }
+        if (container1.isOnStage) {
+            container1.removeFrom();
+            container1.isOnStage = false;
+        }
+        if (container2.isOnStage) {
+            container2.removeFrom();
+            container2.isOnStage = false;
+        }
+    }
+    // Update the stage after changes
+    S.update();
+});
+	
+	     
 	  
 	
-	          //  }); 
-	  
-	}
 	      
 	  
 	
