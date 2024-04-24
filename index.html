@@ -362,7 +362,7 @@ https://zimjs.com/zapps
 
 			pic1.on("click", ()=>{
 
-				cont=new Container(W,H).center();
+				cont=new Container(W,H).center(container1);
 				info=new Label({
 				text:"Rotate your phone to make him dance!", 
 				size:50, 
@@ -385,7 +385,7 @@ https://zimjs.com/zapps
 
 			pic2.on("click", ()=>{
 
-				cont=new Container(W,H).center();
+				cont=new Container(W,H).center(container1);
 				info=new Label({
 				text:"Rotate your phone to make him dance!", 
 				size:50, 
@@ -408,7 +408,7 @@ https://zimjs.com/zapps
 
 			pic3.on("click", ()=>{
 
-				cont=new Container(W,H).center();
+				cont=new Container(W,H).center(container1);
 				info=new Label({
 				text:"Rotate your phone to make him dance!", 
 				size:50, 
@@ -468,7 +468,7 @@ https://zimjs.com/zapps
 
 			pic4.on("click", ()=>{
 
-				cont2=new Container(W,H).center();
+				cont2=new Container(W,H).center(container2);
 				info=new Label({
 				text:"Rotate your phone to make him dance!", 
 				size:50, 
@@ -491,7 +491,7 @@ https://zimjs.com/zapps
 
 			pic5.on("click", ()=>{
 
-			cont2=new Container(W,H).center();
+			cont2=new Container(W,H).center(container2);
 			info=new Label({
 			text:"Rotate your phone to make him dance!", 
 			size:50, 
@@ -514,7 +514,7 @@ https://zimjs.com/zapps
 
 			pic6.on("click", ()=>{
 
-			cont2=new Container(W,H).center();
+			cont2=new Container(W,H).center(container2);
 			info=new Label({
 			text:"Rotate your phone to make him dance!", 
 			size:50, 
@@ -577,7 +577,7 @@ https://zimjs.com/zapps
 
 			pic7.on("click", ()=>{
 
-				cont3=new Container(W,H).center();
+				cont3=new Container(W,H).center(container3);
 				info=new Label({
 				text:"Rotate your phone to make him dance!", 
 				size:50, 
@@ -600,7 +600,7 @@ https://zimjs.com/zapps
 
 			pic8.on("click", ()=>{
 
-			cont3=new Container(W,H).center();
+			cont3=new Container(W,H).center(container3);
 			info=new Label({
 			text:"Rotate your phone to make him dance!", 
 			size:50, 
@@ -624,7 +624,7 @@ https://zimjs.com/zapps
 
 			pic9.on("click", ()=>{
 
-			cont3=new Container(W,H).center();
+			cont3=new Container(W,H).center(container3);
 			info=new Label({
 			text:"Rotate your phone to make him dance!", 
 			size:50, 
@@ -657,23 +657,15 @@ https://zimjs.com/zapps
 
 
 				
-//     // Handle the first range: -40 to -10 degrees
+
     if (e.rotation.y >= -40 && e.rotation.y < -10) {
 		container3.removeFrom();
 		container2.removeFrom();
 		container1.center();
 		S.update();
-//         if (container1) {
-//             container1.alp(1); // Show container1
-//         }
-//         if (container2) {
-//             container2.alp(0); // Hide container2
-//         }
-//         if (container3) {
-//             container3.alp(0); // Hide container3
-//         }
+
      }
-//     // Handle the second range: -10 to 20 degrees
+
      else if (e.rotation.y >= -10 && e.rotation.y <= 20) {
 
 
@@ -681,17 +673,9 @@ https://zimjs.com/zapps
 		container1.removeFrom();
 		container2.center();
 		S.update();
-//         if (container1) {
-//             container1.alp(0); // Hide container1
-//         }
-//         if (container2) {
-//             container2.alp(1); // Show container2
-//         }
-//         if (container3) {
-//             container3.alp(0); // Hide container3
-//         }
+
     }
-//     // Handle the third range: 20 to 40 degrees
+
      else if (e.rotation.y > 20 && e.rotation.y <= 40) {
 
 
@@ -699,18 +683,10 @@ https://zimjs.com/zapps
 		container1.removeFrom();
 		container3.center();
 		S.update();
-//         if (container1) {
-//             container1.alp(0); // Hide container1
-//         }
-//         if (container2) {
-//             container2.alp(0); // Hide container2
-//         }
-//         if (container3) {
-//             container3.alp(1); // Show container3
-//         }
+
      }
 
-//     S.update(); // Update the stage to reflect changes
+
  });
 	
         
@@ -720,60 +696,11 @@ https://zimjs.com/zapps
 	  
 		 
 
-// 		F.on("deviceorientation", (e) => {
-//     if (e.rotation.y >= -40 && e.rotation.y < -10) {
-//         // Handle the first range: -40 to -10
-//         if (!container1.isOnStage) {
-//             container1.center();
-//             container1.isOnStage = true;
-//         }
-//         if (container2.isOnStage) {
-//             container2.removeFrom();
-//             container2.isOnStage = false;
-//         }
-//         if (container3.isOnStage) {
-//             container3.removeFrom();
-//             container3.isOnStage = false;
-//         }
-//     } else if (e.rotation.y >= -10 && e.rotation.y <= 20) {
-//         // Handle the second range: -10 to 20
-//         if (!container2.isOnStage) {
-//             container2.center();
-//             container2.isOnStage = true;
-//         }
-//         if (container1.isOnStage) {
-//             container1.removeFrom();
-//             container1.isOnStage = false;
-//         }
-//         if (container3.isOnStage) {
-//             container3.removeFrom();
-//             container3.isOnStage = false;
-//         }
-//     } else if (e.rotation.y > 20 && e.rotation.y <= 40) {
-//         // Handle the third range: 20 to 40
-//         if (!container3.isOnStage) {
-//             container3.center();
-//             container3.isOnStage = true;
-//         }
-//         if (container1.isOnStage) {
-//             container1.removeFrom();
-//             container1.isOnStage = false;
-//         }
-//         if (container2.isOnStage) {
-//             container2.removeFrom();
-//             container2.isOnStage = false;
-//         }
-//     }
-//     // Update the stage after changes
-//     S.update();
-// });
 
 
 	     
 	  
 	
-	      
-	  
 	
 	        
 	  const permissionType = "deviceorientation"; 
