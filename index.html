@@ -653,46 +653,46 @@ https://zimjs.com/zapps
 
 	
 	
-			F.on("deviceorientation", (e) => {
-    // Handle the first range: -40 to -10 degrees
-    if (e.rotation.y >= -40 && e.rotation.y < -10) {
-        if (container1) {
-            container1.alp(1); // Show container1
-        }
-        if (container2) {
-            container2.alp(0); // Hide container2
-        }
-        if (container3) {
-            container3.alp(0); // Hide container3
-        }
-    }
-    // Handle the second range: -10 to 20 degrees
-    else if (e.rotation.y >= -10 && e.rotation.y <= 20) {
-        if (container1) {
-            container1.alp(0); // Hide container1
-        }
-        if (container2) {
-            container2.alp(1); // Show container2
-        }
-        if (container3) {
-            container3.alp(0); // Hide container3
-        }
-    }
-    // Handle the third range: 20 to 40 degrees
-    else if (e.rotation.y > 20 && e.rotation.y <= 40) {
-        if (container1) {
-            container1.alp(0); // Hide container1
-        }
-        if (container2) {
-            container2.alp(0); // Hide container2
-        }
-        if (container3) {
-            container3.alp(1); // Show container3
-        }
-    }
+// 			F.on("deviceorientation", (e) => {
+//     // Handle the first range: -40 to -10 degrees
+//     if (e.rotation.y >= -40 && e.rotation.y < -10) {
+//         if (container1) {
+//             container1.alp(1); // Show container1
+//         }
+//         if (container2) {
+//             container2.alp(0); // Hide container2
+//         }
+//         if (container3) {
+//             container3.alp(0); // Hide container3
+//         }
+//     }
+//     // Handle the second range: -10 to 20 degrees
+//     else if (e.rotation.y >= -10 && e.rotation.y <= 20) {
+//         if (container1) {
+//             container1.alp(0); // Hide container1
+//         }
+//         if (container2) {
+//             container2.alp(1); // Show container2
+//         }
+//         if (container3) {
+//             container3.alp(0); // Hide container3
+//         }
+//     }
+//     // Handle the third range: 20 to 40 degrees
+//     else if (e.rotation.y > 20 && e.rotation.y <= 40) {
+//         if (container1) {
+//             container1.alp(0); // Hide container1
+//         }
+//         if (container2) {
+//             container2.alp(0); // Hide container2
+//         }
+//         if (container3) {
+//             container3.alp(1); // Show container3
+//         }
+//     }
 
-    S.update(); // Update the stage to reflect changes
-});
+//     S.update(); // Update the stage to reflect changes
+// });
 	
         
           
