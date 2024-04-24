@@ -656,9 +656,12 @@ https://zimjs.com/zapps
  			F.on("deviceorientation", (e) => {
 
 
-				new Rectangle().center();
+				
 //     // Handle the first range: -40 to -10 degrees
-//     if (e.rotation.y >= -40 && e.rotation.y < -10) {
+    if (e.rotation.y >= -40 && e.rotation.y < -10) {
+
+
+		container1.center();
 //         if (container1) {
 //             container1.alp(1); // Show container1
 //         }
@@ -668,7 +671,7 @@ https://zimjs.com/zapps
 //         if (container3) {
 //             container3.alp(0); // Hide container3
 //         }
-//     }
+     }
 //     // Handle the second range: -10 to 20 degrees
 //     else if (e.rotation.y >= -10 && e.rotation.y <= 20) {
 //         if (container1) {
