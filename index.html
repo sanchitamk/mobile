@@ -56,17 +56,23 @@ https://zimjs.com/zapps
         "onedance.mp3",
         "hotlinebling.mp3",
         "dance1.png",
+		"degrassi.png",
         "dance2.png",
         "head.png",
         "drake.png",
         "Anton.ttf",
         "Ubuntu.ttf",
+		"cntower.png",
 		"home.png",
 		"close.png",
 		"house.png",
 		"plane.webp",
 		"award.png",
-		"godsplan.mp3"
+		"godsplan.mp3",
+		"purse.png",
+		"meme1.png",
+		"meme2.png",
+		"meme3.png",
 	]
       const path = "assets/";
 
@@ -328,7 +334,7 @@ https://zimjs.com/zapps
 
 			let container1 = new Container(W, H);
 			let container2 = new Container(W, H);
-			let container3 = new Container(W, H);
+			let container3 = new Container(W, H).center();
 
 
 			// Container 1
@@ -439,24 +445,24 @@ https://zimjs.com/zapps
 			let close2;
 	
 			new Circle(250,pink).pos(0,540,CENTER,BOTTOM,container2).alp(0.5);
-			let pic4=new Pic("house.png").reg(CENTER).sca(0.6).pos(0,500,CENTER,BOTTOM,container2);
+			let pic4=new Pic("degrassi.png").reg(CENTER).sca(0.9).pos(0,550,CENTER,BOTTOM,container2);
 			pic4.wiggle("x", pic4.x, 20, 30, .5, 1);
 			pic4.wiggle("y", pic4.y, 20, 30, .5, 1);
 
 			new Circle(250,pink).pos(50,1150,RIGHT,BOTTOM,container2).alp(0.5);
-			let pic5=new Pic("award.png").reg(CENTER).sca(2.1).pos(50,1150,RIGHT,BOTTOM,container2);
+			let pic5=new Pic("cntower.png").reg(CENTER).sca(0.5).pos(70,1150,RIGHT,BOTTOM,container2);
 			pic5.wiggle("x", pic5.x, 20, 30, .5, 1);
 			pic5.wiggle("y", pic5.y, 20, 30, .5, 1);
 
 
 			new Circle(250,pink).pos(50,1150,LEFT,BOTTOM,container2).alp(0.5);
-			let pic6=new Pic("plane.webp").reg(CENTER).sca(0.4).pos(-20,950,LEFT,BOTTOM,container2).rot(-25);
+			let pic6=new Pic("purse.png").reg(CENTER).sca(0.4).pos(50,1250,LEFT,BOTTOM,container2).rot(-25);
 			pic6.wiggle("x", pic6.x, 20, 30, .5, 1);
 			pic6.wiggle("y", pic6.y, 20, 30, .5, 1);
 
 
 			let infoheading2=new Label({
-				text:"DRAKE'S CHILDHOOD", 
+				text:"DRAKE FUN FACTS", 
 				size:50, 
 				font:"Anton", 
 				color:white,lineWidth:700, 
@@ -471,7 +477,7 @@ https://zimjs.com/zapps
 
 				cont2=new Container(W,H).center(container2);
 				info=new Label({
-				text:"Rotate your phone to make him dance!", 
+				text:"Before he became a global rap superstar, Drake was an actor on the popular Canadian teen drama TV series 'Degrassi: The Next Generation.' ", 
 				size:50, 
 				paddingV:200,
 				paddingH:100,
@@ -494,7 +500,7 @@ https://zimjs.com/zapps
 
 			cont2=new Container(W,H).center(container2);
 			info=new Label({
-			text:"Rotate your phone to make him dance!", 
+			text:"Drake is known for his deep love and advocacy for Toronto, often affectionately calling it 'The 6,' a reference to the city's area codes. His shoutouts to Toronto in his music and public appearances have raised the city's profile on the international stage.", 
 			size:50, 
 			paddingV:200,
 			paddingH:100,
@@ -517,7 +523,7 @@ https://zimjs.com/zapps
 
 			cont2=new Container(W,H).center(container2);
 			info=new Label({
-			text:"Rotate your phone to make him dance!", 
+			text:"Drake has an unusual collection for a rapper: he collects Hermès Birkin bags, a highly coveted type of handbag. He's been gathering them for years as a future gift to the woman he ends up with.", 
 			size:50, 
 			paddingV:200,
 			paddingH:100,
@@ -548,24 +554,24 @@ https://zimjs.com/zapps
 			let close3;
 	
 			new Circle(250,pink).pos(0,540,CENTER,BOTTOM,container3).alp(0.5);
-			let pic7=new Pic("house.png").reg(CENTER).sca(0.6).pos(0,500,CENTER,BOTTOM,container3);
+			let pic7=new Pic("meme1.png").reg(CENTER).sca(1.8).pos(0,610,CENTER,BOTTOM,container3);
 			pic7.wiggle("x", pic7.x, 20, 30, .5, 1);
 			pic7.wiggle("y", pic7.y, 20, 30, .5, 1);
 
 			new Circle(250,pink).pos(50,1150,RIGHT,BOTTOM,container3).alp(0.5);
-			let pic8=new Pic("award.png").reg(CENTER).sca(2.1).pos(50,1150,RIGHT,BOTTOM,container3);
+			let pic8=new Pic("meme2.png").reg(CENTER).sca(0.5).pos(100,1150,RIGHT,BOTTOM,container3);
 			pic8.wiggle("x", pic8.x, 20, 30, .5, 1);
 			pic8.wiggle("y", pic8.y, 20, 30, .5, 1);
 
 
 			new Circle(250,pink).pos(50,1150,LEFT,BOTTOM,container3).alp(0.5);
-			let pic9=new Pic("plane.webp").reg(CENTER).sca(0.4).pos(-20,950,LEFT,BOTTOM,container3).rot(-25);
+			let pic9=new Pic("meme3.png").reg(CENTER).sca(1.9).pos(50,1200,LEFT,BOTTOM,container3).rot(25);
 			pic9.wiggle("x", pic9.x, 20, 30, .5, 1);
 			pic9.wiggle("y", pic9.y, 20, 30, .5, 1);
 
 
 			let infoheading3=new Label({
-				text:"DRAKE", 
+				text:"DRAKE MEMES", 
 				size:50, 
 				font:"Anton", 
 				color:white,lineWidth:700, 
@@ -580,7 +586,7 @@ https://zimjs.com/zapps
 
 				cont3=new Container(W,H).center(container3);
 				info=new Label({
-				text:"Rotate your phone to make him dance!", 
+				text:"The 'Hotline Bling' music video, became famous for the distinctive dance moves performed by Drake throughout the video. These dance moves, which featured unique gestures and enthusiastic hip swings, caught the attention of the internet, sparking a meme frenzy that is still referenced today.", 
 				size:50, 
 				paddingV:200,
 				paddingH:100,
@@ -603,7 +609,7 @@ https://zimjs.com/zapps
 
 			cont3=new Container(W,H).center(container3);
 			info=new Label({
-			text:"Rotate your phone to make him dance!", 
+			text:"The line itself is simple, '21 can you do something for me', but the Internet has blown it out of proportion, making hilarious memes that diss Drake in a classic, emasculating way. Overnight, Drake has become a Baddie icon, showing hype girls how to back their man and how to be the realest, all at the same time. ", 
 			size:50, 
 			paddingV:200,
 			paddingH:100,
@@ -627,7 +633,7 @@ https://zimjs.com/zapps
 
 			cont3=new Container(W,H).center(container3);
 			info=new Label({
-			text:"Rotate your phone to make him dance!", 
+			text:"Drake’s Alter-Ego or Anita Max Wynn refers to a quote said by Canadian rapper Drake during a Kick livestream in mid-December 2023. The alter-ego was inspired by his love of gambling, which can be translated as “I need a max win” in gambling terms. The livestream clip was the subject of memes and it was turned into a viral TikTok sound in which users would lip sync to Drake’s saying Anitta Max Wynn in a Spanish-sounding accent.", 
 			size:50, 
 			paddingV:200,
 			paddingH:100,
