@@ -661,53 +661,53 @@ https://zimjs.com/zapps
 	  
 		 
 
-		F.on("deviceorientation", (e) => {
-    if (e.rotation.y >= -40 && e.rotation.y < -10) {
-        // Handle the first range: -40 to -10
-        if (!container1.isOnStage) {
-            container1.center();
-            container1.isOnStage = true;
-        }
-        if (container2.isOnStage) {
-            container2.removeFrom();
-            container2.isOnStage = false;
-        }
-        if (container3.isOnStage) {
-            container3.removeFrom();
-            container3.isOnStage = false;
-        }
-    } else if (e.rotation.y >= -10 && e.rotation.y <= 20) {
-        // Handle the second range: -10 to 20
-        if (!container2.isOnStage) {
-            container2.center();
-            container2.isOnStage = true;
-        }
-        if (container1.isOnStage) {
-            container1.removeFrom();
-            container1.isOnStage = false;
-        }
-        if (container3.isOnStage) {
-            container3.removeFrom();
-            container3.isOnStage = false;
-        }
-    } else if (e.rotation.y > 20 && e.rotation.y <= 40) {
-        // Handle the third range: 20 to 40
-        if (!container3.isOnStage) {
-            container3.center();
-            container3.isOnStage = true;
-        }
-        if (container1.isOnStage) {
-            container1.removeFrom();
-            container1.isOnStage = false;
-        }
-        if (container2.isOnStage) {
-            container2.removeFrom();
-            container2.isOnStage = false;
-        }
-    }
-    // Update the stage after changes
-    S.update();
-});
+// 		F.on("deviceorientation", (e) => {
+//     if (e.rotation.y >= -40 && e.rotation.y < -10) {
+//         // Handle the first range: -40 to -10
+//         if (!container1.isOnStage) {
+//             container1.center();
+//             container1.isOnStage = true;
+//         }
+//         if (container2.isOnStage) {
+//             container2.removeFrom();
+//             container2.isOnStage = false;
+//         }
+//         if (container3.isOnStage) {
+//             container3.removeFrom();
+//             container3.isOnStage = false;
+//         }
+//     } else if (e.rotation.y >= -10 && e.rotation.y <= 20) {
+//         // Handle the second range: -10 to 20
+//         if (!container2.isOnStage) {
+//             container2.center();
+//             container2.isOnStage = true;
+//         }
+//         if (container1.isOnStage) {
+//             container1.removeFrom();
+//             container1.isOnStage = false;
+//         }
+//         if (container3.isOnStage) {
+//             container3.removeFrom();
+//             container3.isOnStage = false;
+//         }
+//     } else if (e.rotation.y > 20 && e.rotation.y <= 40) {
+//         // Handle the third range: 20 to 40
+//         if (!container3.isOnStage) {
+//             container3.center();
+//             container3.isOnStage = true;
+//         }
+//         if (container1.isOnStage) {
+//             container1.removeFrom();
+//             container1.isOnStage = false;
+//         }
+//         if (container2.isOnStage) {
+//             container2.removeFrom();
+//             container2.isOnStage = false;
+//         }
+//     }
+//     // Update the stage after changes
+//     S.update();
+// });
 	
 	     
 	  
